@@ -11,10 +11,9 @@ describe('zodiac-API routes', () => {
   });
 
   it('/zodiacs should return a list of zodiacs', async () => {
-    const resData = request(app).get('/zodiacs');
-    const expected = zodiacs.map((zodiac) => {
-      return { id: zodiac.id, name: zodiac.name };
-    });
+    const resData = await request(app).get('/zodiacs');
+    const expected = zodiacs.map((zodiac) => ({ id: zodiac.id, name: zodiac.name }));
+
     expect(resData.body).toEqual(expected);
   });
 
